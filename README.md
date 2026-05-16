@@ -1,4 +1,6 @@
-# Fudan-Recommendation-Letter-Template
-A modified LaTeX Template of Recommendation/Reference Letter for Fudan University
+# YNU-Recommendation-Letter-Template
+A modified LaTeX template of recommendation/reference letter for the School of Information Science and Engineering, Yunnan University.
 
-[Example](https://github.com/CFC87/Fudan-Recommendation-Letter-Template/blob/main/FDU_Recommendation_Letter_Template.pdf)
+The template uses the Yunnan University school colors and the Chenggong Campus address of the School of Information Science and Engineering.
+
+[example]()

@@ -1,20 +1,19 @@
-% FDUletter_example.tex - an example latex file to illustrate FDUletter.cls
-%
-% Template by Brian Wood (brian.wood@oregonstate.edu).  Please feel free to send suggestions for changes; this template/cls is not exactly elegantly done!
-% Modified by Huang Weiran (huangweiran1998@outlook.com) to fit the need of FDU students.
+% 云南大学推荐信模板示例
+% 使用 YNUletter.cls 生成带云南大学页眉的推荐信。
 
 
-\documentclass[12pt]{FDUletter}
-\usepackage{fontspec} 
+\documentclass[12pt]{YNUletter}
 \usepackage{tikz} 
 \usepackage{xcolor}
-	\definecolor{fudanblue}{rgb}{0.0549, 0.208, 0.545}
-\usepackage{lipsum}
+	\definecolor{ynublue}{RGB}{33,30,110}
+	\definecolor{ynugreen}{RGB}{26,75,39}
+\usepackage{iftex}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{eso-pic}
+\usepackage[hidelinks]{hyperref}
 %
-% This section is just a bunch of busywork so that the second and following pages read ``Page X of Y''
+% 第二页及之后显示页码。
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
@@ -22,167 +21,138 @@
 \rhead{Page \thepage \hspace{1pt} of \pageref{LastPage}}
 %
 %
-% Set custom font here. Comment this line out if you do not have a Cambria font (originally included with this template) installed; computer modern (or whatever your current default font is) will be substituted.
+% 若使用 XeLaTeX 或 LuaLaTeX 编译，则自动启用项目内的 Cambria 字体。
+% 若使用 pdfLaTeX 编译，则跳过 fontspec，避免 Overleaf 报错。
 %
-%\setmainfont{[Cambria.ttf]}[BoldFont  = [CambriaBold.ttf], ItalicFont  = [CambriaItalic.ttf], BoldItalicFont = [CambriaBoldItalic.ttf] ]
+\ifPDFTeX
+\else
+  \usepackage{fontspec}
+  \setmainfont{Cambria.ttf}[Path=./, BoldFont=CambriaBold.ttf, ItalicFont=CambriaItalic.ttf, BoldItalicFont=CambriaBoldItalic.ttf]
+\fi
 
+% 背景水印，可在正文处调用 \watermark{}{}{} 启用。
 \newcommand{\watermark}[3]{\AddToShipoutPictureBG{
 \parbox[b][\paperheight]{\paperwidth}{
 \vfill%
 \centering%
 \begin{tikzpicture}
     \path (0,0) -- (\paperwidth,\paperheight);
-    \node[opacity=.06] at (current page.center)
+    \node[opacity=.12] at (current page.center)
     {\includegraphics[width=0.55\textwidth]{background.pdf}};
     \end{tikzpicture}
 \vfill}}}
 
-% The material below is a whole big dang thing whose purpose is just to set up a fixed coordinate system for \tikz so that you can put the Department or School address in the upper right-hand side without it moving all around every time you change something in the page.  I think it works.
-% Defining a new coordinate system for the page:
+%%%%%%%%%%% 推荐人信息 %%%%%%%%%%%
 %
-% --------------------------
-% |(-1,1)    (0,1)    (1,1)|
-% |                        |
-% |(-1,0)    (0,0)    (1,0)|
-% |                        |
-% |(-1,-1)   (0,-1)  (1,-1)|
-% --------------------------
-\makeatletter
-\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
-\tikzdeclarecoordinatesystem{page}{
-    \parsecomma#1\endparsecomma
-    \pgfpointanchor{current page}{north east}
-    % Save the upper right corner
-    \pgf@xc=\pgf@x%
-    \pgf@yc=\pgf@y%
-    % save the lower left corner
-    \pgfpointanchor{current page}{south west}
-    \pgf@xb=\pgf@x%
-    \pgf@yb=\pgf@y%
-    % Transform to the correct placement
-    \pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
-    \expandafter\pgf@x\expandafter=\pgfmathresult pt
-    \pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
-    \expandafter\pgf@y\expandafter=\pgfmathresult pt
+\def\name{Peizhong Yang,\\
+Professor, Vice Dean,\\
+School of Information Science and Engineering, YNU
 }
-\makeatother
+\def\sigTel{\textbf{\color{ynublue}Tel.}: 86-13700615845}
+\def\sigEmail{\textbf{\color{ynublue}Email}: pjzhao@ynu.edu.cn}
+\def\PersonalWebsite{https://}
+\def\sigURL{\textbf{\color{ynublue}Website}: \href{\PersonalWebsite}{\PersonalWebsite}}
 %
+% 如需添加学位、职称或资质，可取消下一行注释并填写。
+%\def\What{, 博士，博士生导师} 
 %
-%%%%%%%%%%% Put Personal Information Here %%%%%%%%%%%
-%
-\def\name{Ningsheng Xu,\\
-Professor,\\
-School of Computer Science, FDU
-}
-%
-% List your degree(s), licences, etc. here if you like.
-%\def\What{, Your degrees, etc.} 
-%
-% Set the name of your Department or School here
-% I honestly don't know why the negative spacing is necessary to get the alignment of the first line correct.  This must be a ``\tikz'' thing.
-%%%%%%%%%%%%%%%%%%  School or Department %%%%%%%%%%%%%%%
-\def\Where{\hspace{-1.2mm}\textbf{\color{fudanblue}%{fudanblue}
-School of Computer Science,\\ Fudan University
+%%%%%%%%%%%%%%%%%%  学院与学校名称 %%%%%%%%%%%%%%%
+\def\Where{\hspace{-1.2mm}\textbf{\color{ynublue}
+School of Information\\ Science and Engineering, \\
+Yunnan University
 }} 
-%%%%%%%%%%%%  Additional Contact Information %%%%%%%%%%%
+%%%%%%%%%%%%  右上角联系信息 %%%%%%%%%%%
 %
-% Set your preferred primary contact address here.
-\def\Address{No.220, Handan RD\\
-Yangpu District,} 
+% 地址字段不要以 \\ 开头；需要留白时请调整 \newaddress 中的间距。
+\def\Address{East Outer Ring South Road,\\ Chenggong District, \\
+Kunming, Yunnan 650500} 
 %
-\def\CityZip{Shanghai, 200433} 
+\def\Email{\textbf{\color{ynublue}Email}: xxx@ynu.edu.cn}
 %
-% Set your FDU e-mail here
-\def\Email{\textbf{\color{fudanblue}E-mail}: xxx@fudan.edu.cn}
+\def\SchoolWebsite{http://www.ise.ynu.edu.cn/}
+\def\URL{\textbf{\color{ynublue}URL}: \href{\SchoolWebsite}{\SchoolWebsite}}
 %
-% Set your preferred contact number here
-\def\TEL{\textbf{\color{fudanblue}Phone}: 310-555-5555}
+%%%%%%%%%%%%%%%%  页脚设置  %%%%%%%%%%%%%%%%%%
 %
-% Set your department or personal website here
-\def\URL{\textbf{\color{fudanblue}URL}: http://www.fudan.edu.cn/}
+% 首页底部不显示学院地址。
+\def\school{~} 
 %
-%%%%%%%%%%%%%%%%  Footer information  %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%  签名设置  %%%%%%%%%%%%%%%%%%%%%
 %
-%  The next line is for your college, used as a footer.  If you prefer not to have this, just comment out these lines in favor of the line labeled "[[Alternate]]" below
-\def\school{\small{
-  FDU $\cdot$
-     ~School of Computer Science $\cdot$
-     ~No.220 Handan RD $\cdot$
-     ~Shanghai, China P.R} } 
-% \def\school{~}  % [[Alternate]]
-%
-%%%%%%%%%%%%%%%%%%%%%  Signature line  %%%%%%%%%%%%%%%%%%%%%
-%
-% Set your signature line here.
-% One can add a signature image in a PDF file using the following code; this requires a file called "signature_block.pdf" to be installed in the same folder as the .tex file.  The vertical spacing (\vspace) and the scaling will have to be adjusted to get things to look correct for your particular signature image. Alternatively, comment out the following line in favor of the one labeled "[[Alternate]]" if you want to sign a paper copy of the letter.
+% 这里预留签名空间，老师可手签或插入电子签名。
 %
 \signature{ 
-\vspace{-12mm}\includegraphics[scale=0.40]{signature_block.pdf}\\\vspace{-2mm}
-\name}
-%\signature{\name}  % [[Alternate]]
+\IfFileExists{signature_block.pdf}
+  {\vspace{-8mm}\includegraphics[height=16mm]{signature_block.pdf}\\[-1mm]}
+  {\vspace{14mm}}
+\name\\
+\sigTel\\
+\sigEmail\\
+\sigURL}
 
-% This block sets up the address on the right-hand side of the header. 
-%
-% The following lines just compile the information you set up into the LaTex letter variable "address" for later use.
-%
-%The following command "clears out" the default address so that it can be better set using \tikz
+% 清空 letter 类默认回信地址，右上角信息由 TikZ 固定定位。
 \address{}
 
 \def\newaddress{
-\Where\\ 
+\setlength{\baselineskip}{14.2pt}\Where\\[6pt]
 \Address\\ 
-\CityZip\\ 
-\TEL\\ 
 \Email\\ 
 \URL 
 }
 %
-%%%%%%%%%%%  DATE  %%%%%%%%%%%%%%%%%%%%%%%%%
-% If you want a date different from the current date, comment out the next line in favor of the line labeled "[[Alternate]]".  The ``\vspace{10mm}'' just moves the date down a tiny bit so it doesn't interfere with the header.  This can be adjusted to your preference.
+%%%%%%%%%%%  日期  %%%%%%%%%%%%%%%%%%%%%%%%%
+% 如需固定日期，可改写下一行。
 %
-\date{\vspace{10mm} \today}
-%\date{\vspace{10mm} 20 September 2020}  %[[Alternate]]
+\date{\vspace{9mm} \today}
 %
-%%%%%%%%%%% Set the subject here if there is one  %%%%
-%\subject{Stuff} % optional subject line
+%%%%%%%%%%%  可选主题行  %%%%
+%\subject{推荐信}
 
 \begin{document}
 %
 %
-%%%%%%%%  The "To" address goes here.
+%%%%%%%%  万能收信人抬头  %%%%%%%%
 %
 \begin{letter}{
-               Some University\\ 
-               Some Addresss\\ 
-               SomeTown, SomeState 					       				  		 ~~SomeZip
+               To Whom It May Concern
                }
-% This line sets up the return address to the right-side of the OSU logo.  The location is set with absolute node addresses using ``\tikz''.  It can still be a bit fussy, and you may need to alter this a little to get things to look right.  The bit that changes the position are the numbers in parentheses ``at (14.2,2.7)''
+% 右上角联系信息：与类文件中的竖线对齐，避免与校徽重叠。
 %
 \begin{tikzpicture}[remember picture,overlay,,every node/.style={anchor=center}]
-\node[text width=7cm] at (page cs:0.5,0.73){\small \newaddress};
+\node[anchor=north west,text width=8.25cm,align=left] at ([xshift=-3.76in,yshift=-0.56in]current page.north east){\normalsize \newaddress};
 \end{tikzpicture} 
 
-%%%%%%  The ``opening'' is just the method of address you would like to use at the start of the letter.
+%%%%%%  正文称呼  %%%%%%
 %
-\opening{Dear Application Committee,}
+\opening{To the Admissions Committee,}
 
-%%%%%%%%%% Body of letter   %%%%%%%%%%%%%%
-% Remove it if you do not want watermark
+%%%%%%%%%% 正文区域 %%%%%%%%%%%%%%
+% 如不需要背景水印，删除或注释下一行。
 \watermark{}{}{}
 
-% The ``\lipsum[1-8]" command just fills the letter with 8 paragraphs of Latin for the purposes of filler.  Unless you really want to send filler Latin to someone, you will replace this command with actual text.  Do that here:
-%
-\lipsum[1-5]
+% 在这里填写推荐信正文。
+% 工程项目或领导力等不同证据，避免内容重复。
+I am pleased to write this letter in support of Liu Zihao in his application for a master's programme. I have known him since his first year of undergraduate study at Yunnan University. I am currently a Professor at the School of Life Sciences, Yunnan University, where I have been teaching and conducting research since 1995, and I also serve as Associate Dean responsible for undergraduate education.
 
-%%%%%%% ``closing'' sets the sign-off line.
+I first met Zihao when I taught the compulsory Botany laboratory course during his freshman year. This course requires students not only to understand basic plant morphology and taxonomy, but also to apply theoretical knowledge through practical observation, specimen identification, and field-based reasoning. During the course, Zihao showed careful preparation, a good understanding of fundamental concepts, and a serious attitude toward experimental work. He completed the course with a final score above 90, which reflected excellent examination performance and consistent engagement throughout the semester.
+
+Beyond classroom performance, I had the opportunity to work more closely with Zihao during a professional field practice that I organized and supervised: a comprehensive survey of understory vegetation types and growth conditions in abandoned land at approximately 2,800 meters altitude in the Jiaozi Snow Mountain area. This fieldwork required students to adapt to complex natural conditions, conduct systematic observations, and record ecological data in a rigorous manner. During this practice, Zihao proved to be reliable in carrying out assigned tasks, attentive to data accuracy, and capable of linking field observations with concepts learned in coursework.
+
+As the Associate Dean overseeing undergraduate teaching, I also interacted with Zihao in an academic advising context. Based on my understanding of his academic interests and learning approach, I provided guidance on the selection of a suitable supervisor for his undergraduate thesis. In these discussions, Zihao handled academic planning with seriousness and patience, rather than making decisions hastily.
+
+In my view, Liu Zihao is a student who may not actively seek attention, but who engages in learning with discipline, persistence, and respect for academic standards. These qualities are very important for postgraduate study, especially in structured and demanding learning environments. I believe that Liu Zihao will adapt well to the academic expectations of a master's programme and will benefit from its structured training. 
+
+\textbf{I strongly recommend him for admission}. If you require any further information, please feel free to contact me.
+
+%%%%%%% 结尾与签名 %%%%%%%
 \closing{Sincerely,}
 
-% Comment out/in the lines below as necessary
-%\encl{If an enclosure is provided, let them know what it is.}
+% 如有附件、附言或抄送，可取消对应行的注释。
+%\encl{附件名称}
 
-%\ps{A postscript if that is a thing you do.}
+%\ps{附言内容}
 
-%\cc{Someone Who Cares (and is copied).}
+%\cc{抄送对象}
 
 \end{letter}
 
