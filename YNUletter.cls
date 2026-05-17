@@ -25,12 +25,12 @@
     {\setboolean{logofound}{true}}
     {\setboolean{logofound}{false}}
 
-\setlength{\textwidth}{6.875in}
-\setlength{\textheight}{7.5in}
-\setlength{\topskip}{0.1in}
-\setlength{\footskip}{1.0in}
-\setlength{\oddsidemargin}{-0.25in}
-\setlength{\evensidemargin}{-0.25in}
+\setlength{\textwidth}{7.0in} 
+\setlength{\textheight}{7.5in} 
+\setlength{\topskip}{0.1in} 
+\setlength{\footskip}{1.0in} 
+\setlength{\oddsidemargin}{-0.25in} 
+\setlength{\evensidemargin}{-0.25in} 
 \setlength{\topmargin}{-0.875in}
 
 \DeclareFixedFont{\xcmrbn}{OT1}{cmr}{b}{n}{10}
