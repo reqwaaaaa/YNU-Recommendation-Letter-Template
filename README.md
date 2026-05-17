@@ -15,7 +15,7 @@ A clean and professional LaTeX template for **Recommendation / Reference Letters
 2. Replace the content in `main.tex`
 3. Put your signature image as `signature_block.pdf` (optional)
 
-[**Preview**]() | [Clone Template](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template.git)
+[**Preview**](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template/blob/main/Recommendation_Letter_YPZ.pdf) | [Clone Template](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template.git)
 
 ---
 
