@@ -1,5 +1,5 @@
 % 云南大学推荐信模板类文件
-% 基于 letter.cls，用于生成带云南大学页眉的推荐信。
+% letter.cls，用于生成带云南大学页眉的推荐信。
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{YNUletter}
@@ -106,12 +106,12 @@
      #1\par\nobreak
 }
 
-% 结尾签名块右对齐。
+% we push closing to the right
 \renewcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
     \stopbreaks
     \noindent
-    \hspace*{0.6\textwidth}\parbox{0.4\textwidth}{\raggedright
-    \ignorespaces #1\\[4\medskipamount]%
+    \hspace*{0.5\textwidth}\parbox{0.5\textwidth}{\raggedright
+    \ignorespaces #1\\[0.2mm]%
     \ifx\@empty\fromsig
         \fromname
     \else \fromsig 

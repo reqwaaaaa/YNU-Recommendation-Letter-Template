@@ -45,13 +45,13 @@
 %%%%%%%%%%% 推荐人信息 %%%%%%%%%%%
 %
 \def\name{Peizhong Yang,\\
-Professor, Vice Dean,\\
+Associate Professor, Director of the Computer Science and Technology Degree Program,\\
 School of Information Science and Engineering, YNU
 }
-\def\sigTel{\textbf{\color{ynublue}Tel.}: 86-13700615845}
-\def\sigEmail{\textbf{\color{ynublue}Email}: pjzhao@ynu.edu.cn}
-\def\PersonalWebsite{https://}
-\def\sigURL{\textbf{\color{ynublue}Website}: \href{\PersonalWebsite}{\PersonalWebsite}}
+\def\sigTel{\textbf{\color{ynublue}Tel.}: 86-18100884976}
+\def\sigEmail{\textbf{\color{ynublue}Email}: ypz@ynu.edu.cn}
+\def\PersonalWebsite{https://www.ise.ynu.edu.cn/faculty/7/}
+\def\sigURL{\textbf{\color{ynublue}Profile}: \href{\PersonalWebsite}{\PersonalWebsite}}
 %
 % 如需添加学位、职称或资质，可取消下一行注释并填写。
 %\def\What{, 博士，博士生导师} 
@@ -67,7 +67,7 @@ Yunnan University
 \def\Address{East Outer Ring South Road,\\ Chenggong District, \\
 Kunming, Yunnan 650500} 
 %
-\def\Email{\textbf{\color{ynublue}Email}: xxx@ynu.edu.cn}
+\def\Email{\textbf{\color{ynublue}Email}: ypz@ynu.edu.cn}
 %
 \def\SchoolWebsite{http://www.ise.ynu.edu.cn/}
 \def\URL{\textbf{\color{ynublue}URL}: \href{\SchoolWebsite}{\SchoolWebsite}}
@@ -81,10 +81,10 @@ Kunming, Yunnan 650500}
 %
 % 这里预留签名空间，老师可手签或插入电子签名。
 %
-\signature{ 
-\IfFileExists{signature_block.pdf}
-  {\vspace{-8mm}\includegraphics[height=16mm]{signature_block.pdf}\\[-1mm]}
-  {\vspace{14mm}}
+\signature{
+\IfFileExists{signature.png}
+  {\includegraphics[width=0.22\textwidth]{signature.png}\\[-2mm]}
+  {}
 \name\\
 \sigTel\\
 \sigEmail\\
@@ -113,9 +113,9 @@ Kunming, Yunnan 650500}
 %
 %%%%%%%%  万能收信人抬头  %%%%%%%%
 %
-\begin{letter}{
-               To Whom It May Concern
-               }
+\begin{letter}{\vspace{-3em}}
+%              To Whom It May Concern
+               
 % 右上角联系信息：与类文件中的竖线对齐，避免与校徽重叠。
 %
 \begin{tikzpicture}[remember picture,overlay,,every node/.style={anchor=center}]
@@ -130,19 +130,18 @@ Kunming, Yunnan 650500}
 % 如不需要背景水印，删除或注释下一行。
 \watermark{}{}{}
 
-% 在这里填写推荐信正文。
-% 工程项目或领导力等不同证据，避免内容重复。
-I am pleased to write this letter in support of Liu Zihao in his application for a master's programme. I have known him since his first year of undergraduate study at Yunnan University. I am currently a Professor at the School of Life Sciences, Yunnan University, where I have been teaching and conducting research since 1995, and I also serve as Associate Dean responsible for undergraduate education.
+% 在下面空白处填写推荐信正文。
+I am pleased to write this letter in \textbf{strong support of Enqiang Chen} for admission to your graduate program in Computer Science and related fields. I am Yang Peizhong from the School of Information Science and Engineering at Yunnan University, where my research mainly focuses on spatio-temporal data mining. I have published several first-author papers in well-known venues, including TKDE, TNNLS, and SIGSPATIAL, and I currently serve as the Director of the Computer Science and Technology Degree Program.
 
-I first met Zihao when I taught the compulsory Botany laboratory course during his freshman year. This course requires students not only to understand basic plant morphology and taxonomy, but also to apply theoretical knowledge through practical observation, specimen identification, and field-based reasoning. During the course, Zihao showed careful preparation, a good understanding of fundamental concepts, and a serious attitude toward experimental work. He completed the course with a final score above 90, which reflected excellent examination performance and consistent engagement throughout the semester.
+I first got to know Enqiang during his sophomore year, when I guided him through some basic readings in data mining and big data. Through our regular discussions about his progress and the difficulties he faced, I gradually saw his growing strength in database systems and statistical analysis. Later, because of his initiative and curiosity, I gave him an undergraduate innovation project and asked him to analyze the problem, and come up with a solution on his own. Over the following year, we worked closely on research design, tool selection, and literature reading. In the end, he completed the project on time and obtained a national software copyright.
 
-Beyond classroom performance, I had the opportunity to work more closely with Zihao during a professional field practice that I organized and supervised: a comprehensive survey of understory vegetation types and growth conditions in abandoned land at approximately 2,800 meters altitude in the Jiaozi Snow Mountain area. This fieldwork required students to adapt to complex natural conditions, conduct systematic observations, and record ecological data in a rigorous manner. During this practice, Zihao proved to be reliable in carrying out assigned tasks, attentive to data accuracy, and capable of linking field observations with concepts learned in coursework.
+Enqiang has a strong academic background. He achieved near-perfect scores in Advanced Mathematics and Advanced Algebra, which shows that he has a solid math base and good analytical ability. He also performed very well in major computer science courses such as Database Systems, Application Service Platform Development, and Computer Networks. More importantly, he was able to apply what he learned in practice. For example, he could design back-end database structures according to real business needs, and in network simulation experiments he showed a clear understanding of different network layers.
 
-As the Associate Dean overseeing undergraduate teaching, I also interacted with Zihao in an academic advising context. Based on my understanding of his academic interests and learning approach, I provided guidance on the selection of a suitable supervisor for his undergraduate thesis. In these discussions, Zihao handled academic planning with seriousness and patience, rather than making decisions hastily.
+What impressed me most was his way of thinking about research. He did not just implement existing methods; he tried to understand where earlier approaches fell short and how they could be improved. In our discussions on trajectory pattern mining, he connected theory with algorithm design. He also implemented complex algorithms and carried out experiments in an organized way. He analyzed runtime behavior, improved the data structures, and made the system more stable and efficient. I still remember one stage when the experimental results were not consistent across datasets, which slowed our progress. Instead of getting discouraged, Enqiang went back to the related literature, checked the preprocessing steps again, and adjusted the algorithm design. He kept working through the problem, and the final results became more stable and practically useful. Through this process, he showed a level of maturity and self-learning ability that is not common among undergraduates, and he is capable of reading research papers and turning ideas into actual experiments.
 
-In my view, Liu Zihao is a student who may not actively seek attention, but who engages in learning with discipline, persistence, and respect for academic standards. These qualities are very important for postgraduate study, especially in structured and demanding learning environments. I believe that Liu Zihao will adapt well to the academic expectations of a master's programme and will benefit from its structured training. 
+Of course, he is not without weaknesses. At times, he tends to spend too much time on certain tasks and does not always simplify the work as much as he could. In his earlier years, his understanding of data structures was not strong enough, which slowed him down at times. That said, after he spent more time studying core topics such as dynamic programming and tree-based algorithms, his programming thinking and implementation skills improved a lot. In my view, this kind of steady self-improvement is a sign of real growth. In a nutshell, Enqiang Chen is not a perfect student, but he is hardworking, sincere about learning, and genuinely interested in academic exploration; more importantly, he has the ability, persistence, and potential needed for advanced study. \textbf{I therefore recommend him without reservation and believe he will do well in a rigorous graduate environment}.
 
-\textbf{I strongly recommend him for admission}. If you require any further information, please feel free to contact me.
+If you require any further information, please feel free to contact me.
 
 %%%%%%% 结尾与签名 %%%%%%%
 \closing{Sincerely,}
