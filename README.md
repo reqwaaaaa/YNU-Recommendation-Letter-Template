@@ -1,8 +1,5 @@
-# YNU Recommendation Letter Template
-
-**Adapted from** [CFC](https://github.com/CFC87/Fudan-Recommendation-Letter-Template)
-
-A clean and professional LaTeX template for **Recommendation / Reference Letters** of Yunnan University.
+## YNU Recommendation Letter Template
+>A clean and professional LaTeX template for **Recommendation / Reference Letters** of Yunnan University.
 
 ### Features
 - Yunnan University official colors and Chenggong Campus address
@@ -13,10 +10,10 @@ A clean and professional LaTeX template for **Recommendation / Reference Letters
 ### Usage
 1. Compile with **XeLaTeX** or **LuaLaTeX** (recommended)
 2. Replace the content in `main.tex`
-3. Put your signature image as `signature_block.pdf` (optional)
+3. Put your signature image as `signature.png` (optional)
 
-[**Preview**](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template/blob/main/Recommendation_Letter_YPZ.pdf) | [Clone Template](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template.git)
+[Preview](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template/blob/main/Recommendation_Letter_YPZ.pdf) | [Clone Template](https://github.com/reqwaaaaa/YNU-Recommendation-Letter-Template.git)
 
 ---
-
-Made for School of Information Science and Engineering, Yunnan University.
+*Adapted from* [CFC](https://github.com/CFC87/Fudan-Recommendation-Letter-Template)
+**Long may the sun shine!**
